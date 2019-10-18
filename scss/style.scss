@@ -136,3 +136,49 @@ ul {
     margin-top: 22px;
   }
 }
+
+.card-summary {
+  background: $lightText;
+  width: 22vw;
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: inline-block;
+  box-shadow: 2px 2px 3px #999;
+  text-align: center;
+  .description {
+    border-bottom: 1px solid gray;
+  }
+  table {
+    width: 100%;
+    tbody tr,
+    tfoot tr {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+main {
+  h2 {
+    text-align: center;
+  }
+  .details-container {
+    width: 100%;
+    table {
+      border-bottom: 1px solid black;
+      tr th {
+        width: 25%;
+        padding: 0.25rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .summary {
+    text-align: center;
+    .card-summary {
+      width: 60vw;
+      margin: 1rem;
+    }
+  }
+}
