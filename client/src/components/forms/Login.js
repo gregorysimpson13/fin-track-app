@@ -60,7 +60,7 @@ export default class Login extends Component {
             <button type="submit">Submit</button>
           </div>
         </form>
-        <Link className="new-user-link" to="/registration">
+        <Link className="new-user-link" to="/register">
           New User
         </Link>
       </div>
