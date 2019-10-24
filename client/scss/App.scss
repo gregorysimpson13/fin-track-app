@@ -194,6 +194,11 @@ main {
   }
 }
 
+.new-user-link {
+  display: block;
+  margin: 2rem;
+}
+
 @media (max-width: 780px) {
   .summary {
     text-align: center;

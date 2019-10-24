@@ -145,6 +145,10 @@ main .details-container {
     margin: 0.25rem;
     padding: 0.25rem; }
 
+.new-user-link {
+  display: block;
+  margin: 2rem; }
+
 @media (max-width: 780px) {
   .summary {
     text-align: center; }
