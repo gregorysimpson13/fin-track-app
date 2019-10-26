@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { storeAuthToken } from "../../utils/auth";
 
 export default class Login extends Component {
   constructor() {
@@ -25,7 +26,7 @@ export default class Login extends Component {
     axios
       .post("/api/user/login", login)
       .then(result => {
-        localStorage.setItem("Authorization", result.data.token);
+        storeAuthToken(result.data.token);
         window.location.href = "/";
       })
       .catch(err => console.log(err));

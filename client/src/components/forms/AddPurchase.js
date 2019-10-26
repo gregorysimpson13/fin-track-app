@@ -24,9 +24,6 @@ export class AddPurchase extends Component {
       subcategory: this.state.subcategory,
       notes: this.state.notes
     };
-    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
-      "Authorization"
-    );
     axios
       .post("/api/purchase/add", purchaseData)
       .then(result => {
@@ -69,16 +66,17 @@ export class AddPurchase extends Component {
               Category <span className="required">*</span>
             </label>
             <select name="category" id="category" onChange={this.onChange}>
-              <option value="donations">Donations</option>
-              <option value="investment">Investment</option> -->
-              <option value="housing">Housing</option>
-              <option value="transportation">Transportation</option>
-              <option value="food">Food</option>
-              <option value="insurance">Insurance</option>
-              <option value="personal">Personal</option>
-              <option value="entertainment">Entertainment</option>
-              <option value="loan">Loans</option>
-              <option value="professional">Professional</option>
+              <option value="Donations">Donations</option>
+              <option value="Investment">Investment</option> -->
+              <option value="Housing">Housing</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Food">Food</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Personal">Personal</option>
+              <option value="Other">Other</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Loan">Loans</option>
+              <option value="Professional">Professional</option>
             </select>
           </div>
           <div className="merchant-container">

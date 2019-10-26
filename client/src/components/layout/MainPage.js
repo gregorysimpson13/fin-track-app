@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
+
 import AddButton from "../buttons/AddButton";
 import axios from "axios";
 
@@ -10,13 +12,9 @@ export class MainPage extends Component {
     };
   }
   componentDidMount = () => {
-    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
-      "Authorization"
-    );
     axios
       .get("/api/purchase/all")
       .then(result => {
-        console.log(result);
         this.setState({ purchases: result.data });
       })
       .catch(err => console.log(err));
@@ -27,11 +25,12 @@ export class MainPage extends Component {
       <div className="details-container container">
         <ol>
           {this.state.purchases.map((value, index) => {
-            console.log(value);
             return (
               <ol className="purchase-details" key={index}>
-                <li>Price: {value.price}</li>
-                <li>Date: {value.date}</li>
+                <li>Price: ${value.price}</li>
+                <li>
+                  Date: <Moment format="MMM DD YYYY">{value.date}</Moment>
+                </li>
                 <li>Merchant: {value.merchant}</li>
                 <li>Category: {value.category}</li>
                 {value.subcategory ? (

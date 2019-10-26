@@ -154,4 +154,8 @@ main .details-container {
     text-align: center; }
     .summary .card-summary {
       width: 60vw;
-      margin: 1rem; } }
+      margin: 1rem; }
+  .details-container {
+    text-align: center; }
+    .details-container .purchase-details {
+      text-align: left; } }
