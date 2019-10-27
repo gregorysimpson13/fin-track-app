@@ -194,7 +194,8 @@ main {
 }
 
 .purchase-details {
-  border: 1px solid black;
+  border: 2px solid black;
+  box-shadow: 2px 2px 3px #999;
   border-radius: 3px;
   display: inline-block;
   padding: 1rem;
@@ -252,7 +253,8 @@ main {
 }
 
 .monthly-summary {
-  border: 1px solid black;
+  border: 2px solid black;
+  box-shadow: 2px 2px 3px #999;
   border-radius: 5px;
   display: inline-block;
   padding: 1rem;
