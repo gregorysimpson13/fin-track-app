@@ -11,6 +11,7 @@ import AddPurchase from "./components/forms/AddPurchase";
 import MainPage from "./components/layout/MainPage";
 import PrivateRoute from "./components/common/PrivateRoute";
 import { setAuthToken, logoutUser } from "./utils/auth";
+import Summary from "./components/layout/Summary";
 
 // check for auth token
 if (localStorage.authToken) {
@@ -37,6 +38,7 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/" component={MainPage} />
             <PrivateRoute exact path="/add" component={AddPurchase} />
+            <PrivateRoute exact path="/summary" component={Summary} />
           </Switch>
           <Route exact path="/login" component={Login} />
         </main>

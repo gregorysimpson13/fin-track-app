@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { storeAuthToken } from "../../utils/auth";
+import { storeAuthToken, logoutUser } from "../../utils/auth";
 
 export default class Login extends Component {
   constructor() {
@@ -14,7 +14,7 @@ export default class Login extends Component {
 
   componentDidMount = () => {
     // if logged in log out
-    localStorage.removeItem("Authorization");
+    logoutUser();
   };
 
   onSubmit = event => {

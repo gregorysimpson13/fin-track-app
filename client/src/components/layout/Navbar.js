@@ -1,11 +1,30 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { isAuthenticated } from "../../utils/auth";
 
 const Navbar = () => {
   return (
     <header>
-      <div className="header-content">
-        <h1>Finanical Tracking Application</h1>
-      </div>
+      <nav className="header-content">
+        <div className="title-div">
+          <Link className="navbar-title" to="/">
+            Financial Tracker
+          </Link>
+        </div>
+        {isAuthenticated() ? (
+          <div className="links-div">
+            <Link className="page-link" to="/">
+              Details
+            </Link>
+            <Link className="page-link" to="/summary">
+              Summary
+            </Link>
+            <Link className="page-link" to="/login">
+              Log Out
+            </Link>
+          </div>
+        ) : null}
+      </nav>
     </header>
   );
 };

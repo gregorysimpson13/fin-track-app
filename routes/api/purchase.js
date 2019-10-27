@@ -1,6 +1,8 @@
 const express = require("express");
 const passport = require("passport");
 
+const PurchaseSummaryList = require("../../objects/PurchaseSummary");
+
 const router = express.Router();
 
 // load Purchase model
@@ -48,6 +50,23 @@ router.get(
         return req.json();
       }
       return res.json(purchases);
+    });
+  }
+);
+
+// @route   GET api/purchase/all
+// @desc    get all purhcases for user
+// @access  PRIVATE
+router.get(
+  "/summary",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Purchase.find({ user: req.user }).then(purchases => {
+      if (!purchases) {
+        return req.json();
+      }
+      const pSummaryList = new PurchaseSummaryList(purchases);
+      return res.json(pSummaryList.purchaseSummaries);
     });
   }
 );

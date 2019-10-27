@@ -17,7 +17,12 @@ export class MainPage extends Component {
       .then(result => {
         this.setState({ purchases: result.data });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        if (err.response.status === 401) {
+          window.location.href = "/login";
+        }
+        console.log(err);
+      });
   };
 
   getPurchases = () => {

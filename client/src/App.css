@@ -10,9 +10,26 @@ body {
 
 header {
   background: #64b164; }
-  header h1 {
-    text-align: center;
-    padding: 1.5rem; }
+  header nav {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 2rem; }
+    header nav .navbar-title,
+    header nav .page-link {
+      text-decoration: none; }
+    header nav .navbar-title {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: black; }
+    header nav .page-link {
+      color: black;
+      background: #f8f8ff;
+      margin: 0.75rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 2px solid black; }
 
 main {
   background: #fff; }
@@ -158,4 +175,32 @@ main .details-container {
   .details-container {
     text-align: center; }
     .details-container .purchase-details {
-      text-align: left; } }
+      text-align: left; }
+  header {
+    background: #64b164;
+    padding-bottom: 1rem; }
+    header nav {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      line-height: 2rem; }
+      header nav .links-div {
+        margin-top: 1rem;
+        width: 100%; } }
+
+.monthly-summary {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 1rem; }
+
+.form-body form button {
+  margin-top: 1rem;
+  background: #64b164;
+  color: #f8f8ff;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 0.5rem 3.5rem; }
