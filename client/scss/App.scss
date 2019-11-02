@@ -208,10 +208,18 @@ main {
   h2 {
     margin: 0.5rem;
   }
-  input,
+  input {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
   button {
-    margin: 0.25rem;
-    padding: 0.25rem;
+    margin-top: 1rem;
+    background: $mainGreen;
+    color: $lightText;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 0.5rem 3.5rem;
   }
 }
 
@@ -258,13 +266,12 @@ main {
   border-radius: 5px;
   display: inline-block;
   padding: 1rem;
+  margin: 1rem;
 }
-.form-body form button {
-  margin-top: 1rem;
-  background: $mainGreen;
-  color: $lightText;
-  border: none;
-  font-weight: bold;
-  border-radius: 5px;
-  padding: 0.5rem 3.5rem;
+
+a:active,
+a:focus,
+button:active,
+button:focus {
+  outline: none;
 }

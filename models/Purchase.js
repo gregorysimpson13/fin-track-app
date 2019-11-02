@@ -15,7 +15,7 @@ const PurchaseSchema = new Schema({
     type: String,
     required: true
   },
-  subCategory: {
+  subcategory: {
     type: String,
     required: false
   },

@@ -15,9 +15,11 @@ router.post(
   "/add",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    // hack to make sure its the correct date (add one second)
+    const date = new Date(new Date(req.body.date).getTime() + 60000000);
     const purchaseData = {
       price: req.body.price,
-      date: req.body.date,
+      date,
       category: req.body.category,
       subcategory: req.body.subcategory,
       merchant: req.body.merchant,
