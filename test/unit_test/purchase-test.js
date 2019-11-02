@@ -5,72 +5,50 @@ const PurchaseSummaryList = require("../../objects/PurchaseSummary");
 const purchaseList = [
   {
     date: "2019-10-24T00:00:00.000Z",
-    _id: "5db226c106a9c80017c7e03a",
     price: 10.31,
     category: "Food",
-    merchant: "Panda Express",
-    user: "5db2177661b7f0001713b229",
-    __v: 0
+    merchant: "Panda Express"
   },
   {
     date: "2019-10-24T00:00:00.000Z",
-    _id: "5db2664c76b2830017d6023f",
     price: 6.24,
     category: "Food",
-    merchant: "Jamba Juice",
-    user: "5db2177661b7f0001713b229",
-    __v: 0
+    merchant: "Jamba Juice"
   },
   {
     date: "2019-10-25T00:00:00.000Z",
-    _id: "5db33b829e8f4b0017e0287b",
     price: 130,
     category: "Personal",
-    merchant: "Taylor Ranch Self Storage",
-    user: "5db2177661b7f0001713b229",
-    __v: 0
+    merchant: "Taylor Ranch Self Storage"
   },
   {
     date: "2019-10-25T00:00:00.000Z",
-    _id: "5db3a55447bdce0017bd2444",
     price: 6.95,
     category: "Personal",
-    merchant: "Walmart",
-    user: "5db2177661b7f0001713b229",
-    notes: "Supplies for vision week and $1 worth of candy",
-    __v: 0
+    merchant: "Walmart"
   },
   {
     date: "2019-10-25T00:00:00.000Z",
-    _id: "5db3a5d247bdce0017bd2445",
-    price: 9.44,
+    price: 1.0,
     category: "Personal",
-    merchant: "Dollar Tree",
-    user: "5db2177661b7f0001713b229",
-    notes: "Supplies for vision week. Also grabbed $1 water.",
-    __v: 0
+    merchant: "Dollar Tree"
   },
   {
     date: "2019-12-25T00:00:00.000Z",
-    _id: "5db3a5d247bdce0017bd2445",
     price: 9.44,
     category: "Personal",
-    merchant: "Dollar Tree",
-    user: "5db2177661b7f0001713b229",
-    notes: "Supplies for vision week. Also grabbed $1 water.",
-    __v: 0
+    merchant: "Dollar Tree"
   }
 ];
 
 const result = [
   {
-    month: 10,
     year: 2019,
-    categories: [
-      { name: "Food", spent: 134.23 },
-      { name: "Other", spent: 22.31 }
-    ]
-  }
+    month: 10,
+    categories: { Food: 16.65, Personal: 137.95 },
+    total: 154.7
+  },
+  { year: 2019, month: 12, categories: { Personal: 18.88 }, total: 18.88 }
 ];
 
 // describe("Purchase Sync Test", () => {

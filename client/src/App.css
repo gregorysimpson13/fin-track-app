@@ -158,10 +158,17 @@ main .details-container {
   margin: 2rem; }
   .form-body h2 {
     margin: 0.5rem; }
-  .form-body input,
+  .form-body input {
+    margin: 0.5rem;
+    padding: 0.5rem; }
   .form-body button {
-    margin: 0.25rem;
-    padding: 0.25rem; }
+    margin-top: 1rem;
+    background: #64b164;
+    color: #f8f8ff;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 0.5rem 3.5rem; }
 
 .new-user-link {
   display: block;
@@ -196,13 +203,11 @@ main .details-container {
   box-shadow: 2px 2px 3px #999;
   border-radius: 5px;
   display: inline-block;
-  padding: 1rem; }
+  padding: 1rem;
+  margin: 1rem; }
 
-.form-body form button {
-  margin-top: 1rem;
-  background: #64b164;
-  color: #f8f8ff;
-  border: none;
-  font-weight: bold;
-  border-radius: 5px;
-  padding: 0.5rem 3.5rem; }
+a:active,
+a:focus,
+button:active,
+button:focus {
+  outline: none; }

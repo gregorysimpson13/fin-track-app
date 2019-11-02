@@ -42,6 +42,7 @@ export class Summary extends Component {
                   </h5>
                 );
               })}
+              <h5>Total: ${value.total}</h5>
             </div>
           );
         })}

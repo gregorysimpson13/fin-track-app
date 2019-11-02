@@ -66,6 +66,7 @@ export class AddPurchase extends Component {
               Category <span className="required">*</span>
             </label>
             <select name="category" id="category" onChange={this.onChange}>
+              <option>Select A Category</option>
               <option value="Donations">Donations</option>
               <option value="Investment">Investment</option> -->
               <option value="Housing">Housing</option>
