@@ -12,8 +12,8 @@ const purchase = require("./routes/api/purchase");
 const facebook = require("./routes/api/facebook");
 
 const app = express(); // init the application
-app.use(cors({ origin: "https://www.facebook.com", credentials: false }));
-//app.use(cors());
+//app.use(cors({ origin: "https://www.facebook.com", credentials: false }));
+app.use(cors());
 // app.options("*", cors());
 
 // Connect to mongoose
