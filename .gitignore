@@ -1,7 +1,7 @@
 /css/style.css
 /node_modules
 /client/node_modules
-/config/keys.js
+#/config/keys.js
 /.vscode
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
