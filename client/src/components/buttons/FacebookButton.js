@@ -10,7 +10,7 @@ const responseFacebook = response => {
   //     headers: "Access-Control-Allow-Origin: https://www.facebook.com"
   //   };
   //   axios.post("/api/auth/facebook/hey", { headers }).then(r => console.log(r));
-  //   axios.post("/api/auth/facebook/callback").then(r => console.log(r));
+  axios.post("/api/auth/facebook/callback").then(r => console.log(r));
 };
 
 const onClick = e => {
