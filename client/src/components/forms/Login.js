@@ -60,6 +60,14 @@ export default class Login extends Component {
           <div>
             <button type="submit">Submit</button>
           </div>
+          <div
+            className="fb-login-button"
+            data-width=""
+            data-size="large"
+            data-button-type="login_with"
+            data-auto-logout-link="false"
+            data-use-continue-as="false"
+          ></div>
         </form>
         <Link className="new-user-link" to="/register">
           New User

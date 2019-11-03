@@ -211,3 +211,6 @@ a:focus,
 button:active,
 button:focus {
   outline: none; }
+
+.fb-login-button {
+  margin-top: 2rem; }
