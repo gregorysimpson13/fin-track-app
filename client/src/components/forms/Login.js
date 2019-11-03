@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { storeAuthToken, logoutUser } from "../../utils/auth";
+import FacebookButton from "../buttons/FacebookButton";
 
 export default class Login extends Component {
   constructor() {
@@ -58,16 +59,11 @@ export default class Login extends Component {
             />
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button className="submit" type="submit">
+              Submit
+            </button>
           </div>
-          <div
-            className="fb-login-button"
-            data-width=""
-            data-size="large"
-            data-button-type="login_with"
-            data-auto-logout-link="false"
-            data-use-continue-as="false"
-          ></div>
+          <FacebookButton />
         </form>
         <Link className="new-user-link" to="/register">
           New User

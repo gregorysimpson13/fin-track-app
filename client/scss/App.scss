@@ -212,8 +212,9 @@ main {
     margin: 0.5rem;
     padding: 0.5rem;
   }
-  button {
+  .submit {
     margin-top: 1rem;
+    margin-bottom: 2rem;
     background: $mainGreen;
     color: $lightText;
     border: none;
@@ -274,8 +275,4 @@ a:focus,
 button:active,
 button:focus {
   outline: none;
-}
-
-.fb-login-button {
-  margin-top: 2rem;
 }
