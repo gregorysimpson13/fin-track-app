@@ -5,13 +5,15 @@ import jwt_decode from "jwt-decode";
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import Registration from "./components/forms/Registration";
+//import Registration from "./components/forms/Registration";
 import Login from "./components/forms/Login";
 import AddPurchase from "./components/forms/AddPurchase";
 import MainPage from "./components/layout/MainPage";
 import PrivateRoute from "./components/common/PrivateRoute";
 import { setAuthToken, logoutUser } from "./utils/auth";
 import Summary from "./components/layout/Summary";
+import UnauthRoute from "./components/common/UnauthRoute";
+import LogoutRedirect from "./components/common/LogoutRedirect";
 
 // check for auth token
 if (localStorage.authToken) {
@@ -33,14 +35,15 @@ function App() {
     <Fragment>
       <Router>
         <Navbar />
-        <Route exact path="/register" component={Registration} />
+        {/* <Route exact path="/register" component={Registration} /> */}
         <main>
           <Switch>
             <PrivateRoute exact path="/" component={MainPage} />
             <PrivateRoute exact path="/add" component={AddPurchase} />
             <PrivateRoute exact path="/summary" component={Summary} />
+            <UnauthRoute exact path="/login" component={Login} />
+            <Route exact path="/logout" component={LogoutRedirect} />
           </Switch>
-          <Route exact path="/login" component={Login} />
         </main>
         <Footer />
       </Router>

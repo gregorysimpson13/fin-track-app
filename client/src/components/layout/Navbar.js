@@ -19,7 +19,7 @@ const Navbar = () => {
             <Link className="page-link" to="/summary">
               Summary
             </Link>
-            <Link className="page-link" to="/login">
+            <Link className="page-link" to="/logout">
               Log Out
             </Link>
           </div>

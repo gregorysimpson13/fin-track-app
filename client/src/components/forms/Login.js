@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 // import { Link } from "react-router-dom";
-import { storeAuthToken, logoutUser } from "../../utils/auth";
+import { storeAuthToken } from "../../utils/auth";
 import FacebookButton from "../buttons/FacebookButton";
 import GoogleLoginButton from "../buttons/GoogleLoginButton";
 
@@ -13,11 +13,6 @@ export default class Login extends Component {
       password: ""
     };
   }
-
-  componentDidMount = () => {
-    // if logged in log out
-    // logoutUser();
-  };
 
   onSubmit = event => {
     event.preventDefault();
