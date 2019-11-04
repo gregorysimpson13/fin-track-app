@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
+// import Footer from "./components/layout/Footer";
 //import Registration from "./components/forms/Registration";
 import Login from "./components/forms/Login";
 import AddPurchase from "./components/forms/AddPurchase";
@@ -45,7 +45,7 @@ function App() {
             <Route exact path="/logout" component={LogoutRedirect} />
           </Switch>
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </Fragment>
   );
