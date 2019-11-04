@@ -1,17 +1,17 @@
 import React from "react";
 import FacebookLoginWithButton from "react-facebook-login";
 import axios from "axios";
+import { storeAuthToken } from "../../utils/auth";
 
 const responseFacebook = response => {
   console.log(response);
   axios
     .post("/api/auth/facebook/confirm", response)
-    .then(res => {
-      console.log(res);
+    .then(result => {
+      storeAuthToken(result.data.token);
+      window.location.href = "/";
     })
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => console.log(err));
 };
 
 const FacebookButton = () => {

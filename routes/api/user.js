@@ -53,6 +53,9 @@ router.post("/login", (req, res) => {
   const errors = {};
   const email = req.body.email;
   const password = req.body.password;
+  if (password === null || password === undefined || password === "") {
+    return res.status(401).json({ error: "empty password" });
+  }
   User.findOne({ email }).then(user => {
     if (!user) {
       errors.email = "User not found";
