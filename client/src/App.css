@@ -212,3 +212,10 @@ a:focus,
 button:active,
 button:focus {
   outline: none; }
+
+.login-buttons {
+  text-align: center; }
+  .login-buttons button {
+    width: 300px;
+    height: 75px;
+    margin: 1rem 0; }

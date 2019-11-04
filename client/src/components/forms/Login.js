@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { storeAuthToken, logoutUser } from "../../utils/auth";
 import FacebookButton from "../buttons/FacebookButton";
+import GoogleLoginButton from "../buttons/GoogleLoginButton";
 
 export default class Login extends Component {
   constructor() {
@@ -39,35 +40,9 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="form-body container">
-        <h2>Login</h2>
-        <form onSubmit={this.onSubmit} method="POST">
-          <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              onChange={this.onChange}
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              onChange={this.onChange}
-            />
-          </div>
-          <div>
-            <button className="submit" type="submit">
-              Submit
-            </button>
-          </div>
-          <FacebookButton />
-        </form>
-        <Link className="new-user-link" to="/register">
-          New User
-        </Link>
+      <div className="container login-buttons">
+        <FacebookButton />
+        <GoogleLoginButton />
       </div>
     );
   }

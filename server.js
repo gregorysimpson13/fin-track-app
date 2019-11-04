@@ -11,6 +11,7 @@ const db = require("./config/keys").mongoURI;
 const user = require("./routes/api/user");
 const purchase = require("./routes/api/purchase");
 const facebook = require("./routes/api/facebook");
+const google = require("./routes/api/google");
 
 const app = express(); // init the application
 //app.use(cors({ origin: "https://www.facebook.com", credentials: false }));
@@ -40,6 +41,7 @@ require("./config/facebook-passport")(passport);
 app.use("/api/user", user);
 app.use("/api/purchase", purchase);
 app.use("/api/auth/facebook", facebook);
+app.use("/api/auth/google", google);
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
