@@ -2,11 +2,18 @@ import React from "react";
 import FacebookLoginWithButton from "react-facebook-login";
 import axios from "axios";
 import { storeAuthToken } from "../../utils/auth";
+import CryptoJS from "crypto-js";
+import { hackKey } from "../../facebook-hack";
 
 const responseFacebook = response => {
-  console.log(response);
+  const rawName = CryptoJS.AES.encrypt(response.name, hackKey);
+  const rawEmail = CryptoJS.AES.encrypt(response.email, hackKey);
+  const name = rawName.toString();
+  const email = rawEmail.toString();
+  const data = { name, email, response };
+
   axios
-    .post("/api/auth/facebook/confirm", response)
+    .post("/api/auth/facebook/confirm", data)
     .then(result => {
       storeAuthToken(result.data.token);
       window.location.href = "/";
