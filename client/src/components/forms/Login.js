@@ -16,7 +16,7 @@ export default class Login extends Component {
 
   componentDidMount = () => {
     // if logged in log out
-    logoutUser();
+    // logoutUser();
   };
 
   onSubmit = event => {
