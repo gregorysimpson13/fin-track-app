@@ -11,6 +11,8 @@
 /client/.pnp
 /client/.pnp.js
 
+/client/src/facebook-hack.js
+
 # testing
 /client/coverage
 
