@@ -6,6 +6,7 @@ import CryptoJS from "crypto-js";
 import { hackKey } from "../../facebook-hack";
 
 const responseFacebook = response => {
+  if (response.status === "unknown") return;
   const rawName = CryptoJS.AES.encrypt(response.name, hackKey);
   const rawEmail = CryptoJS.AES.encrypt(response.email, hackKey);
   const name = rawName.toString();
