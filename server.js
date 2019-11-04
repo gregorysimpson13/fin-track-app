@@ -4,6 +4,7 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const db = require("./config/keys").mongoURI;
 
@@ -13,6 +14,7 @@ const facebook = require("./routes/api/facebook");
 
 const app = express(); // init the application
 //app.use(cors({ origin: "https://www.facebook.com", credentials: false }));
+app.use(cookieParser());
 app.use(cors());
 // app.options("*", cors());
 
