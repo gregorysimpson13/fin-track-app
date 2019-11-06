@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
+import CurrencyFormat from "react-currency-format";
 
 import AddButton from "../buttons/AddButton";
 import axios from "axios";
@@ -32,7 +33,17 @@ export class MainPage extends Component {
           {this.state.purchases.map((value, index) => {
             return (
               <ol className="purchase-details" key={index}>
-                <li>Price: ${value.price}</li>
+                <li>
+                  Price:{" "}
+                  <CurrencyFormat
+                    value={value.price}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$"}
+                    fixedDecimalScale={true}
+                    decimalScale={2}
+                  />
+                </li>
                 <li>
                   Date: <Moment format="MMM DD YYYY">{value.date}</Moment>
                 </li>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
+import CurrencyFormat from "react-currency-format";
 
 import AddButton from "../buttons/AddButton";
 import axios from "axios";
@@ -38,11 +39,27 @@ export class Summary extends Component {
               {Object.entries(value.categories).map((category, val) => {
                 return (
                   <h5 key={val}>
-                    {category[0]} ${category[1]}
+                    {category[0]}{" "}
+                    <CurrencyFormat
+                      value={category[1]}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      prefix={"$"}
+                    />
                   </h5>
                 );
               })}
-              <h5>Total: ${value.total}</h5>
+              <h5>
+                Total:{" "}
+                <CurrencyFormat
+                  value={value.total}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"$"}
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                />
+              </h5>
             </div>
           );
         })}
