@@ -14,16 +14,12 @@ export class MainPage extends Component {
   }
 
   deleteEvent = e => {
-    console.log(e.target.value);
     const pObj = this.findPurchaseObject(e.target.value);
-    console.log(pObj);
-    const confirm = window.confirm(
-      `Do you really want to delete ${pObj.merchant} Purchase?`
-    );
+    const confirm = window.confirm(`Delete ${pObj.merchant} Purchase?`);
     if (confirm) {
-      console.log("del this");
-    } else {
-      console.log("nahhhh");
+      axios.delete(`/api/purchase/delete/${pObj._id}`).then(val => {
+        window.location.reload(true);
+      });
     }
   };
 
@@ -31,6 +27,7 @@ export class MainPage extends Component {
     console.log(e.target.value);
     const pObj = this.findPurchaseObject(e.target.value);
     console.log(pObj);
+    this.props.history.push(`/editpurchase/${e.target.value}`);
   };
 
   findPurchaseObject = id => {
@@ -48,7 +45,6 @@ export class MainPage extends Component {
       })
       .catch(err => {
         if (err.response.status === 401) {
-          //window.location.href = "/login";
         }
         console.log(err);
       });

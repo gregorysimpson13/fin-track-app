@@ -7,8 +7,8 @@ import { hackKey } from "../../facebook-hack";
 
 const responseFacebook = response => {
   if (response.status === "unknown") return;
-  const rawName = CryptoJS.AES.encrypt(response.name, hackKey);
-  const rawEmail = CryptoJS.AES.encrypt(response.email, hackKey);
+  const rawName = CryptoJS.AES.encrypt(response.name.toString(), hackKey);
+  const rawEmail = CryptoJS.AES.encrypt(response.email.toString(), hackKey);
   const name = rawName.toString();
   const email = rawEmail.toString();
   const data = { name, email, response };

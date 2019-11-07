@@ -10,9 +10,38 @@ export class AddPurchase extends Component {
       category: "",
       merchant: "",
       subcategory: "",
-      notes: ""
+      notes: "",
+      id: null
     };
   }
+
+  componentDidMount = () => {
+    const { id } = this.props.match.params;
+    if (!id) return;
+    this.setState({ id: id });
+    axios
+      .get(`/api/purchase/${id}`)
+      .then(purchase => {
+        const {
+          price,
+          date,
+          category,
+          merchant,
+          subcategory,
+          notes
+        } = purchase.data;
+        const modifiedDate = date.split("T")[0];
+        if (price) this.setState({ price: price });
+        if (modifiedDate) this.setState({ date: modifiedDate });
+        if (category) this.setState({ category: category });
+        if (merchant) this.setState({ merchant: merchant });
+        if (subcategory) this.setState({ subcategory: subcategory });
+        if (notes) this.setState({ notes: notes });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   onSubmit = event => {
     event.preventDefault();
@@ -24,8 +53,12 @@ export class AddPurchase extends Component {
       subcategory: this.state.subcategory,
       notes: this.state.notes
     };
+    const uri =
+      this.state.id !== null
+        ? `/api/purchase/edit/${this.state.id}`
+        : "/api/purchase/add";
     axios
-      .post("/api/purchase/add", purchaseData)
+      .post(uri, purchaseData)
       .then(result => {
         window.location.href = "/";
       })
@@ -53,19 +86,31 @@ export class AddPurchase extends Component {
               name="price"
               step=".01"
               onChange={this.onChange}
+              value={this.state.price}
             />
           </div>
           <div className="date-container">
             <label htmlFor="date">
               Purchse Date <span className="required">*</span>
             </label>
-            <input type="date" name="date" id="date" onChange={this.onChange} />
+            <input
+              type="date"
+              name="date"
+              id="date"
+              onChange={this.onChange}
+              value={this.state.date}
+            />
           </div>
           <div className="category-container">
             <label htmlFor="category">
               Category <span className="required">*</span>
             </label>
-            <select name="category" id="category" onChange={this.onChange}>
+            <select
+              name="category"
+              id="category"
+              onChange={this.onChange}
+              value={this.state.category}
+            >
               <option>Select A Category</option>
               <option value="Donations">Donations</option>
               <option value="Investment">Investment</option> -->
@@ -88,6 +133,7 @@ export class AddPurchase extends Component {
               type="text"
               name="merchant"
               id="merchant"
+              value={this.state.merchant}
               onChange={this.onChange}
             />
           </div>
@@ -97,6 +143,7 @@ export class AddPurchase extends Component {
               type="text"
               name="subcategory"
               id="subcategory"
+              value={this.state.subcategory}
               onChange={this.onChange}
             />
           </div>
@@ -106,6 +153,7 @@ export class AddPurchase extends Component {
               type="text"
               name="notes"
               id="notes"
+              value={this.state.notes}
               onChange={this.onChange}
             ></textarea>
           </div>

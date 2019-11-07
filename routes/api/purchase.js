@@ -41,7 +41,7 @@ router.post(
 );
 
 // @route   GET api/purchase/all
-// @desc    get all purhcases for user
+// @desc    get all purchase for user
 // @access  PRIVATE
 router.get(
   "/all",
@@ -52,6 +52,85 @@ router.get(
         return req.json();
       }
       return res.json(purchases);
+    });
+  }
+);
+
+// @route   GET api/purchase/:id
+// @desc    get specific purchase for user
+// @access  PRIVATE
+router.get(
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Purchase.findById(req.params.id).then(purchase => {
+      if (!purchase) {
+        return req.json({ error: "unable to find id" });
+      }
+      if (purchase.user.toString() !== req.user.id.toString()) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      return res.json(purchase);
+    });
+  }
+);
+
+// @route   DELETE api/purchase/:id
+// @desc    get specific purchase for user
+// @access  PRIVATE
+router.delete(
+  "/delete/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Purchase.findById(req.params.id).then(purchase => {
+      if (!purchase) {
+        return req.json({ error: "unable to find id" });
+      }
+      if (purchase.user.toString() !== req.user.id.toString()) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      purchase
+        .remove()
+        .then(val => {
+          return res.json({ message: "object removed" });
+        })
+        .catch(err => {
+          return res.json({ error: "could not remove object" });
+        });
+    });
+  }
+);
+
+// @route   POST api/purchase/edit/:id
+// @desc    get all purhcases for user
+// @access  PRIVATE
+router.post(
+  "/edit/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Purchase.findById(req.params.id).then(purchase => {
+      if (!purchase) {
+        return req.json({ error: "unable to find id" });
+      }
+      if (purchase.user.toString() !== req.user.id.toString()) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      const { price, date, category, merchant, subcategory, notes } = req.body;
+      purchase.price = price;
+      const d = new Date(date);
+      if (d.getTime() !== new Date(purchase).getTime()) {
+        purchase.date = d.getTime() + 60000000;
+      }
+      purchase.category = category;
+      purchase.merchant = merchant;
+      purchase.subcategory = subcategory;
+      purchase.notes = notes;
+      purchase
+        .save()
+        .then(p => {
+          return res.json(p);
+        })
+        .catch(err => console.log(err));
     });
   }
 );

@@ -40,6 +40,11 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/" component={MainPage} />
             <PrivateRoute exact path="/add" component={AddPurchase} />
+            <PrivateRoute
+              exact
+              path="/editpurchase/:id"
+              component={AddPurchase}
+            />
             <PrivateRoute exact path="/summary" component={Summary} />
             <UnauthRoute exact path="/login" component={Login} />
             <Route exact path="/logout" component={LogoutRedirect} />
