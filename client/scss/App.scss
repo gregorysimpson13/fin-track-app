@@ -285,3 +285,22 @@ button:focus {
     margin: 1rem 0;
   }
 }
+
+.modify-buttons {
+  width: 100%;
+  text-align: center;
+  button {
+    display: inline-block;
+    margin: 0.5rem 0 0.1rem 0.5rem;
+    padding: 0.5rem 2rem;
+    width: 45%;
+    color: white;
+    border: none;
+  }
+  .del-button {
+    background: red;
+  }
+  .edit-button {
+    background: green;
+  }
+}

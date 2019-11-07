@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
 import CurrencyFormat from "react-currency-format";
+//import PropTypes from "prop-types";
 
 import AddButton from "../buttons/AddButton";
 import axios from "axios";
@@ -9,9 +10,38 @@ export class MainPage extends Component {
   constructor() {
     super();
     this.state = {
-      purchases: []
+      purchases: [],
+      showConfirm: false
     };
   }
+
+  deleteEvent = e => {
+    console.log(e.target.value);
+    const pObj = this.findPurchaseObject(e.target.value);
+    console.log(pObj);
+    const confirm = window.confirm(
+      `Do you really want to delete ${pObj.merchant} Purchase?`
+    );
+    if (confirm) {
+      console.log("del this");
+    } else {
+      console.log("nahhhh");
+    }
+  };
+
+  editEvent = e => {
+    console.log(e.target.value);
+    const pObj = this.findPurchaseObject(e.target.value);
+    console.log(pObj);
+  };
+
+  findPurchaseObject = id => {
+    const pObj = this.state.purchases.find(purchase => {
+      return purchase._id === id;
+    });
+    return pObj;
+  };
+
   componentDidMount = () => {
     axios
       .get("/api/purchase/all")
@@ -29,10 +59,10 @@ export class MainPage extends Component {
   getPurchases = () => {
     return (
       <div className="details-container container">
-        <ol>
-          {this.state.purchases.map((value, index) => {
-            return (
-              <ol className="purchase-details" key={index}>
+        {this.state.purchases.map((value, index) => {
+          return (
+            <div className="purchase-details" key={index}>
+              <ol>
                 <li>
                   Price:{" "}
                   <CurrencyFormat
@@ -54,9 +84,25 @@ export class MainPage extends Component {
                 ) : null}
                 {value.notes ? <li>Notes: {value.notes}</li> : null}
               </ol>
-            );
-          })}
-        </ol>
+              <div className="modify-buttons">
+                <button
+                  onClick={this.deleteEvent}
+                  value={value._id}
+                  className="del-button"
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={this.editEvent}
+                  value={value._id}
+                  className="edit-button"
+                >
+                  Edit
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -67,6 +113,7 @@ export class MainPage extends Component {
         <h2>Purchases</h2>
         {this.getPurchases()}
         <AddButton />
+        {this.showConfirm ? <Confirm /> : null}
       </div>
     );
   }

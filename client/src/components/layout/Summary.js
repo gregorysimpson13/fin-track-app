@@ -45,6 +45,8 @@ export class Summary extends Component {
                       displayType={"text"}
                       thousandSeparator={true}
                       prefix={"$"}
+                      fixedDecimalScale={true}
+                      decimalScale={2}
                     />
                   </h5>
                 );
