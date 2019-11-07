@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
 import CurrencyFormat from "react-currency-format";
-//import PropTypes from "prop-types";
 
 import AddButton from "../buttons/AddButton";
 import axios from "axios";
@@ -10,8 +9,7 @@ export class MainPage extends Component {
   constructor() {
     super();
     this.state = {
-      purchases: [],
-      showConfirm: false
+      purchases: []
     };
   }
 
@@ -113,7 +111,6 @@ export class MainPage extends Component {
         <h2>Purchases</h2>
         {this.getPurchases()}
         <AddButton />
-        {this.showConfirm ? <Confirm /> : null}
       </div>
     );
   }
