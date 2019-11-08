@@ -8,7 +8,7 @@ const Navbar = () => {
       <nav className="header-content">
         <div className="title-div">
           <Link className="navbar-title" to="/">
-            Financial Tracker
+            Fintrack
           </Link>
         </div>
         {isAuthenticated() ? (
