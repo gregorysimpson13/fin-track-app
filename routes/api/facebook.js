@@ -19,7 +19,7 @@ router.post("/confirm", (req, res) => {
     return res.status(401).json({ error: "failed to get data" });
   }
   // const validated_payload = JSON.parse(base64url.decode(encoded_payload));
-  const name = CryptoJS.AES.decrypt(req.body.name, "asdfa7457lajksdf").toString(
+  const name = CryptoJS.AES.decrypt(req.body.name, hackKey).toString(
     CryptoJS.enc.Utf8
   );
   const email = CryptoJS.AES.decrypt(req.body.email, hackKey).toString(
