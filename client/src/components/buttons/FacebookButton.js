@@ -32,7 +32,8 @@ class FacebookButton extends Component {
           fields="name,email"
           callback={this.responseFacebook}
           icon="fa-facebook"
-          redirectUri="/"
+          //redirectUri="/"
+          isMobile={false}
         />
       </div>
     );
