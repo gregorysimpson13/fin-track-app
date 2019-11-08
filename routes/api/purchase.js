@@ -79,25 +79,6 @@ router.get(
   }
 );
 
-// @route   GET api/purchase/:id
-// @desc    get specific purchase for user
-// @access  PRIVATE
-router.get(
-  "/:id",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Purchase.findById(req.params.id).then(purchase => {
-      if (!purchase) {
-        return req.json({ error: "unable to find id" });
-      }
-      if (purchase.user.toString() !== req.user.id.toString()) {
-        return res.status(401).json({ error: "Unauthorized" });
-      }
-      return res.json(purchase);
-    });
-  }
-);
-
 // @route   DELETE api/purchase/:id
 // @desc    get specific purchase for user
 // @access  PRIVATE
@@ -154,6 +135,25 @@ router.post(
           return res.json(p);
         })
         .catch(err => console.log(err));
+    });
+  }
+);
+
+// @route   GET api/purchase/:id
+// @desc    get specific purchase for user
+// @access  PRIVATE
+router.get(
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Purchase.findById(req.params.id).then(purchase => {
+      if (!purchase) {
+        return req.json({ error: "unable to find id" });
+      }
+      if (purchase.user.toString() !== req.user.id.toString()) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      return res.json(purchase);
     });
   }
 );
