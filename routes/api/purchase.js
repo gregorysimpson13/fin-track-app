@@ -47,12 +47,35 @@ router.get(
   "/all",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Purchase.find({ user: req.user }).then(purchases => {
-      if (!purchases) {
-        return req.json();
-      }
-      return res.json(purchases);
-    });
+    Purchase.find({ user: req.user })
+      .sort({ date: -1 })
+      .then(purchases => {
+        if (!purchases) {
+          return req.json();
+        }
+        return res.json(purchases);
+      });
+  }
+);
+
+// @route   GET api/purchase/summary
+// @desc    get summary for user
+// @access  PRIVATE
+router.get(
+  "/summary",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Purchase.find({ user: req.user })
+      .then(purchases => {
+        if (!purchases) {
+          return req.json();
+        }
+        const pSummaryList = new PurchaseSummaryList(purchases);
+        return res.json(pSummaryList.purchaseSummaries);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 );
 
@@ -131,23 +154,6 @@ router.post(
           return res.json(p);
         })
         .catch(err => console.log(err));
-    });
-  }
-);
-
-// @route   GET api/purchase/all
-// @desc    get all purhcases for user
-// @access  PRIVATE
-router.get(
-  "/summary",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Purchase.find({ user: req.user }).then(purchases => {
-      if (!purchases) {
-        return req.json();
-      }
-      const pSummaryList = new PurchaseSummaryList(purchases);
-      return res.json(pSummaryList.purchaseSummaries);
     });
   }
 );
