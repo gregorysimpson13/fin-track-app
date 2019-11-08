@@ -39,7 +39,11 @@ router.post("/confirm", (req, res) => {
 });
 
 async function saveUser(name, email) {
-  const user = await new User({ name, email }).save();
-  return user;
+  try {
+    const user = await new User({ name, email }).save();
+    return user;
+  } catch (err) {
+    console.log(err);
+  }
 }
 module.exports = router;
