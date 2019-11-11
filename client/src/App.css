@@ -24,12 +24,11 @@ header {
       font-size: 1.5rem;
       color: black; }
     header nav .page-link {
-      color: black;
-      background: #f8f8ff;
+      color: white;
       margin: 0.75rem;
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: 2px solid black; }
+      padding: 0; }
+      header nav .page-link:hover, header nav .page-link:active {
+        color: black; }
 
 main {
   background: #fff; }
