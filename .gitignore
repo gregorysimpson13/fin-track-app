@@ -12,6 +12,7 @@
 /client/.pnp.js
 
 /client/src/facebook-hack.js
+/client/public/idea.ico
 
 # testing
 /client/coverage

@@ -47,31 +47,35 @@ router.get(
   "/all",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Purchase.find({ user: req.user }).then(purchases => {
-      if (!purchases) {
-        return req.json();
-      }
-      return res.json(purchases);
-    });
+    Purchase.find({ user: req.user })
+      .sort({ date: -1 })
+      .then(purchases => {
+        if (!purchases) {
+          return req.json();
+        }
+        return res.json(purchases);
+      });
   }
 );
 
-// @route   GET api/purchase/:id
-// @desc    get specific purchase for user
+// @route   GET api/purchase/summary
+// @desc    get summary for user
 // @access  PRIVATE
 router.get(
-  "/:id",
+  "/summary",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Purchase.findById(req.params.id).then(purchase => {
-      if (!purchase) {
-        return req.json({ error: "unable to find id" });
-      }
-      if (purchase.user.toString() !== req.user.id.toString()) {
-        return res.status(401).json({ error: "Unauthorized" });
-      }
-      return res.json(purchase);
-    });
+    Purchase.find({ user: req.user })
+      .then(purchases => {
+        if (!purchases) {
+          return req.json();
+        }
+        const pSummaryList = new PurchaseSummaryList(purchases);
+        return res.json(pSummaryList.purchaseSummaries);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 );
 
@@ -135,19 +139,21 @@ router.post(
   }
 );
 
-// @route   GET api/purchase/all
-// @desc    get all purhcases for user
+// @route   GET api/purchase/:id
+// @desc    get specific purchase for user
 // @access  PRIVATE
 router.get(
-  "/summary",
+  "/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Purchase.find({ user: req.user }).then(purchases => {
-      if (!purchases) {
-        return req.json();
+    Purchase.findById(req.params.id).then(purchase => {
+      if (!purchase) {
+        return req.json({ error: "unable to find id" });
       }
-      const pSummaryList = new PurchaseSummaryList(purchases);
-      return res.json(pSummaryList.purchaseSummaries);
+      if (purchase.user.toString() !== req.user.id.toString()) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      return res.json(purchase);
     });
   }
 );

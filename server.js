@@ -17,7 +17,19 @@ const app = express(); // init the application
 //app.use(cors({ origin: "https://www.facebook.com", credentials: false }));
 app.use(cookieParser());
 app.use(cors());
-// app.options("*", cors());
+
+// redirect url
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV === "production") {
+    if (req.headers["x-forwarded-proto"] !== "https") {
+      return res.redirect("https://" + req.headers.host + req.url);
+    } else {
+      return next();
+    }
+  } else {
+    return next();
+  }
+});
 
 // Connect to mongoose
 mongoose
