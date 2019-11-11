@@ -91,7 +91,7 @@ export class AddPurchase extends Component {
           </div>
           <div className="date-container">
             <label htmlFor="date">
-              Purchse Date <span className="required">*</span>
+              Purchase Date <span className="required">*</span>
             </label>
             <input
               type="date"
