@@ -115,6 +115,7 @@ export class AddPurchase extends Component {
               <option value="Donations">Donations</option>
               <option value="Entertainment">Entertainment</option>
               <option value="Food">Food</option>
+              <option value="Giving">Giving</option>
               <option value="Housing">Housing</option>
               <option value="Insurance">Insurance</option>
               <option value="Investment">Investment</option>
