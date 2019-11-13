@@ -113,16 +113,17 @@ export class AddPurchase extends Component {
             >
               <option>Select A Category</option>
               <option value="Donations">Donations</option>
-              <option value="Investment">Investment</option> -->
-              <option value="Housing">Housing</option>
-              <option value="Transportation">Transportation</option>
-              <option value="Food">Food</option>
-              <option value="Insurance">Insurance</option>
-              <option value="Personal">Personal</option>
-              <option value="Other">Other</option>
               <option value="Entertainment">Entertainment</option>
+              <option value="Food">Food</option>
+              <option value="Housing">Housing</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Investment">Investment</option>
               <option value="Loan">Loans</option>
+              <option value="Other">Other</option>
+              <option value="Personal">Personal</option>
               <option value="Professional">Professional</option>
+              <option value="Saving">Saving</option>
+              <option value="Transportation">Transportation</option>
             </select>
           </div>
           <div className="merchant-container">
