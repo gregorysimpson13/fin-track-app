@@ -31,9 +31,11 @@ app.use((req, res, next) => {
   }
 });
 
+const mongodb = process.env.mongoURI || db;
+
 // Connect to mongoose
 mongoose
-  .connect(db, {
+  .connect(mongodb, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
