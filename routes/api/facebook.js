@@ -28,6 +28,7 @@ router.post("/confirm", (req, res) => {
   User.findOne({ email }).then(u => {
     const user = !u ? saveUser(name, email) : u;
     const payload = { id: user.id, name: user.name, email: user.email };
+    console.log(`user: ${user.name} email: ${user.email}`);
     jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
       res.json({
         success: true,
