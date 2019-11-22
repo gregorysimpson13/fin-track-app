@@ -25,6 +25,7 @@ router.post("/confirm", (req, res) => {
   const email = CryptoJS.AES.decrypt(req.body.email, hackKey).toString(
     CryptoJS.enc.Utf8
   );
+  console.log(`name: ${name}, email: ${email}`);
   User.findOne({ email }).then(u => {
     const user = !u ? saveUser(name, email) : u;
     const payload = { id: user.id, name: user.name, email: user.email };
