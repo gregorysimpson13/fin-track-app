@@ -10,7 +10,6 @@ const User = require("../../models/User");
 
 router.post("/confirm", (req, res) => {
   const split = req.body.response.signedRequest.split(".");
-  console.log(req.body);
   const encoded_sig = split[0];
   const encoded_payload = split[1];
   const expected = CryptoJS.HmacSHA256(encoded_payload, keys.facebookSecret);
@@ -25,11 +24,9 @@ router.post("/confirm", (req, res) => {
   const email = CryptoJS.AES.decrypt(req.body.email, hackKey).toString(
     CryptoJS.enc.Utf8
   );
-  console.log(`name: ${name}, email: ${email}`);
   User.findOne({ email }).then(u => {
     const user = !u ? saveUser(name, email) : u;
     const payload = { id: user.id, name: user.name, email: user.email };
-    console.log(`user: ${user.name} email: ${user.email}`);
     jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
       res.json({
         success: true,
