@@ -1,3 +1,3 @@
 module.exports = {
-  hackKey: process.env.hackKey || "oij39ijsldnf23"
+  hackKey: "oij39ijsldnf23"
 };
