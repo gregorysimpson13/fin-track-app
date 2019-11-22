@@ -6,7 +6,7 @@ module.exports = passport => {
     new FacebookStrategy(
       {
         clientID: "721703521675195",
-        clientSecret: process.env.facebookSecret || keys.facebookSecret,
+        clientSecret: keys.facebookSecret,
         profileFields: ["email", "name"],
         callbackURL: "http://localhost:3000/auth/facebook/callback",
         profileURL: "https://graph.facebook.com/v5.0/me"
