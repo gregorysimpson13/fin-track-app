@@ -10,7 +10,7 @@ const User = require("../../models/User");
 
 router.post("/confirm", (req, res) => {
   const split = req.body.response.signedRequest.split(".");
-  // console.log(req.body);
+  console.log(req.body);
   const encoded_sig = split[0];
   const encoded_payload = split[1];
   const expected = CryptoJS.HmacSHA256(encoded_payload, keys.facebookSecret);
